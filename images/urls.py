@@ -5,4 +5,4 @@ urlpatterns = [
     path('', views.gallery, name='gallery'),
     path('image/<str:pk>', views.viewImage, name='image'),
     path('add_image/', views.addImage, name='add_image'),
-]           
+]
