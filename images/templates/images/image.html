@@ -21,8 +21,8 @@
             <div class="col-md-4">
                 <a href="{% url 'gallery' %}" class="btn btn-sm btn-dark my-3 text-warning">Back to gallery</a>
                 <br>
-                <img src="" alt="">
-                <p>Horse riding trip was amazing</p>
+                <img style="max-width: 100%;max-height: 100%;" src="{{image.image.url}}" alt="">
+                <p> {{image.description}} </p>
             </div>
         </div>
     </div>
