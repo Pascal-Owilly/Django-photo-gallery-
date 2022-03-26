@@ -13,6 +13,17 @@ def viewImage(request, pk):
     return render(request, 'images/image.html', {'image' : image})
 
 def addImage(request):
-    return render(request, 'images/add_image.html')
+    categories = Category.objects.all()
+
+    if request.method == 'POST':
+        data = request.POST
+        image = request.FILES.get('image')
+
+        print('data:', data)
+        print('image:', image)
+
+
+    context = {'categories' : categories}
+    return render(request, 'images/add_image.html', context)
  
     
