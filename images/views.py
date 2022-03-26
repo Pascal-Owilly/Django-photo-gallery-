@@ -1,11 +1,17 @@
-from unicodedata import name
+
 from django.shortcuts import render, redirect
 from .models import Category, Image
 
 # Create your views here.
 def gallery(request):
+    category = request.GET.get('category')
+
+    if category == None:
+          images = Image.objects.all()
+
+    else:
+        images = Image.objects.filter(category__name=category)
     categories = Category.objects.all()
-    images = Image.objects.all()
     context = {'categories' : categories, 'images' : images}
     return render(request, 'images/gallery.html', context)
 
