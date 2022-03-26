@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from unicodedata import name
+from django.shortcuts import render, redirect
 from .models import Category, Image
 
 # Create your views here.
@@ -19,10 +20,21 @@ def addImage(request):
         data = request.POST
         image = request.FILES.get('image')
 
-        print('data:', data)
-        print('image:', image)
+        if data['category'] != 'none':
+            category = Category.objects.get(id=data['category'])
 
+        elif data['new_category'] != '':
+              category, created = Category.objects.get_or_create(name=data['new_category'])
+        else:
+            category = None
 
+        image = Image.objects.create(
+            category=category,
+            description=data['description'],
+            image=image,
+        ) 
+
+        return redirect('gallery')
     context = {'categories' : categories}
     return render(request, 'images/add_image.html', context)
  
