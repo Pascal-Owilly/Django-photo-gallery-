@@ -24,7 +24,11 @@
         <ul class="list-group">
           <li class="list-group-item active"> <a style="color: white;font-weight: 700;" href=" {% url 'gallery' %} "> All Categories </a> </li>
           {% for category in categories %}
-          <li class="list-group-item">{{ category.name }}</li>
+          <li class="list-group-item">
+            <a href=" {% url 'gallery' %}?category={{category.name}} ">  {{ category.name }} </a>
+           
+          
+          </li>
           {% endfor %}
 
           <a href="{% url 'add_image' %}" class="btn btn-dark btn-block text-warning">Add Picture</a>

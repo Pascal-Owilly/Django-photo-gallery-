@@ -16,4 +16,10 @@ class Image(models.Model):
 
     def __str__(self):
         return self.description
+
+class Location(models.Model):
+    locality = models.TextField()
+
+    def __str__(self):
+        return self.locality
     
