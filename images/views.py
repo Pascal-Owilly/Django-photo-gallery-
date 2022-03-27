@@ -2,10 +2,29 @@
 from django.shortcuts import render, redirect
 from .models import Category, Image
 from django.views.decorators.csrf import csrf_exempt
+from .models import Article
 
 # Create your views here.
 
+def search_results(request):
 
+    if 'article' in request.GET and request.GET["article"]:
+        search_term = request.GET.get("article")
+        searched_articles = Article.search_by_category(search_term)
+        message = f"{search_term}"
+
+        return render(request, 'search_results.html',{"message":message,"images": searched_articles})
+
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'all-news/search.html',{"message":message})
+
+
+
+# def deleteImage(request, delete):
+#     image = Image.objects.get(pk=delete)
+#     image.delete()
+#     return redirect('gallery')
 
 def gallery(request):
     category = request.GET.get('category')
@@ -18,12 +37,6 @@ def gallery(request):
     categories = Category.objects.all()
     context = {'categories' : categories, 'images' : images}
     return render(request, 'images/gallery.html', context)
-
-# def deleteImage(request):
-#     image = Category.objects.get('deleteImage')
-#     image.delete()
-#     return redirect(request, 'gallery')
-
 @csrf_exempt
 def viewImage(request, pk):
     image  = Image.objects.get(id=pk)

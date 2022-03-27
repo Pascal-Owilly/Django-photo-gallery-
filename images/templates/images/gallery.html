@@ -17,6 +17,9 @@
 </head>
 
 <body>
+  {% include "navbar.html" %}
+  
+{% block content %}
   <h3 class="text-center">Photo Gallery</h3>
   <div class="container-fluid mt-5">
     <div class="row">
@@ -54,6 +57,7 @@
           {% empty %}
           <p>No images yet</p>
           {% endfor %}
+          {% endblock %}
 
         </div>
 </body>
