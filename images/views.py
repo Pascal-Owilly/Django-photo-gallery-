@@ -5,6 +5,8 @@ from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 
+
+
 def gallery(request):
     category = request.GET.get('category')
 
@@ -16,6 +18,12 @@ def gallery(request):
     categories = Category.objects.all()
     context = {'categories' : categories, 'images' : images}
     return render(request, 'images/gallery.html', context)
+
+# def deleteImage(request):
+#     image = Category.objects.get('deleteImage')
+#     image.delete()
+#     return redirect(request, 'gallery')
+
 @csrf_exempt
 def viewImage(request, pk):
     image  = Image.objects.get(id=pk)
