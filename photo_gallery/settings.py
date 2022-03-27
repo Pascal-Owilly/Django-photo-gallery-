@@ -60,6 +60,8 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
+CSRF_TRUSTED_ORIGINS = ["https://photo-gallery-django.herokuapp.com"]
+
 ROOT_URLCONF = 'photo_gallery.urls'
 
 TEMPLATES = [
