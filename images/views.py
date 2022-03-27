@@ -1,8 +1,10 @@
 
 from django.shortcuts import render, redirect
 from .models import Category, Image
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
+
 def gallery(request):
     category = request.GET.get('category')
 
@@ -14,7 +16,7 @@ def gallery(request):
     categories = Category.objects.all()
     context = {'categories' : categories, 'images' : images}
     return render(request, 'images/gallery.html', context)
-
+@csrf_exempt
 def viewImage(request, pk):
     image  = Image.objects.get(id=pk)
     return render(request, 'images/image.html', {'image' : image})
