@@ -169,4 +169,4 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Configure Django App for Heroku.
-django_heroku.settings(locals())
+django_heroku.settings(locals())import django_heroku
