@@ -19,12 +19,12 @@ def search_results(request):
         message = "You haven't searched for any term"
         return render(request, 'all-news/search.html',{"message":message})
 
+def delete_photo(request, id):
+    image = Image.objects.get(pk=id)
+    image.delete()
+    return redirect('gallery')
 
 
-# def deleteImage(request, delete):
-#     image = Image.objects.get(pk=delete)
-#     image.delete()
-#     return redirect('gallery')
 
 def gallery(request):
     category = request.GET.get('category')

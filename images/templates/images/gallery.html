@@ -51,6 +51,11 @@
                 <small>Category: {{image.category.name}} </small>
                 <p class="card-text"></p>
                 <a href="{% url 'image' image.id %}" class="btn btn-secondary">View Photo</a>
+                <form action="{% url 'delete-photo' image.id %}" method="post" class="btn btn-sm">
+                  {% csrf_token %}
+                    <button type="submit" class="btn btn-danger text-warning btn-sm"><small>Delete</small>
+                      <i class="fa-solid fa-trash-can"></i>
+                
               </div>
             </div>
           </div>

@@ -9,6 +9,7 @@ urlpatterns = [
     path('image/<str:pk>', views.viewImage, name='image'),
     path('add_image/', views.addImage, name='add_image'),
     path('search/', views.search_results, name='search_results'),
+    path('delete_photo/<int:id>', views.delete_photo, name='delete-photo')
 ]
 if settings.DEBUG:
     urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
