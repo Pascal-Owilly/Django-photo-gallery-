@@ -15,7 +15,9 @@ import os
 import dj_database_url
 from decouple import config, Csv
 import django_heroku
-
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 MODE=config("MODE", default="dev")
 SECRET_KEY = config('SECRET_KEY')
@@ -154,6 +156,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static')
 
 
 # Extra places for collectstatic to find static files.
@@ -168,7 +171,13 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # configuring the location for media
 # MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static')
+
+
+cloudinary.config( 
+  cloud_name = "djangophotogallery", 
+  api_key = "548131285592445", 
+  api_secret = "SczRiN6BcjPK9ygi78jmXmsrjeI" 
+)
 
 # Configure Django App for Heroku.
 django_heroku.settings(locals())
