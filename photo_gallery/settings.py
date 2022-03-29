@@ -15,9 +15,16 @@ import os
 import dj_database_url
 from decouple import config, Csv
 import django_heroku
-# import cloudinary_storage
 import cloudinary.uploader
 import cloudinary.api
+
+
+cloudinary.config( 
+  cloud_name = "djangophotogallery", 
+  api_key = "548131285592445", 
+  api_secret = "SczRiN6BcjPK9ygi78jmXmsrjeI" 
+)
+
 
 MODE=config("MODE", default="dev")
 SECRET_KEY = config('SECRET_KEY')
@@ -55,11 +62,11 @@ INSTALLED_APPS = [
 
 ]
 
-# CLOUDINARY_STORAGE = {
-#     'CLOUD_NAME': 'your_cloud_name',
-#     'API_KEY': 'your_api_key',
-#     'API_SECRET': 'your_api_secret'
-# }
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'djangophotogallery',
+    'API_KEY': '548131285592445',
+    'API_SECRET': 'SczRiN6BcjPK9ygi78jmXmsrjeI'
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -182,15 +189,10 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # configuring the location for media
 # MEDIA_URL = '/media/'
 
-import cloudinary_storage
 
 MEDIA_URL = '/media/'  
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
-cloudinary.config( 
-  cloud_name = "djangophotogallery", 
-  api_key = "548131285592445", 
-  api_secret = "SczRiN6BcjPK9ygi78jmXmsrjeI" 
-)
+
 # Configure Django App for Heroku.
 django_heroku.settings(locals())
