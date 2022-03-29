@@ -15,7 +15,7 @@ import os
 import dj_database_url
 from decouple import config, Csv
 import django_heroku
-import cloudinary_storage
+# import cloudinary_storage
 import cloudinary.uploader
 import cloudinary.api
 
@@ -55,11 +55,11 @@ INSTALLED_APPS = [
 
 ]
 
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'your_cloud_name',
-    'API_KEY': 'your_api_key',
-    'API_SECRET': 'your_api_secret'
-}
+# CLOUDINARY_STORAGE = {
+#     'CLOUD_NAME': 'your_cloud_name',
+#     'API_KEY': 'your_api_key',
+#     'API_SECRET': 'your_api_secret'
+# }
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
