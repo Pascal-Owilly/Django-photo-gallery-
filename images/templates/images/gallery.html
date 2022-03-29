@@ -17,25 +17,24 @@
   </style>
 </head>
 
-<body>
+<body class="bg-dark">
   {% include "navbar.html" %}
   
 {% block content %}
-  <h3 class="text-center">Photo Gallery</h3>
   <div class="container-fluid mt-5">
     <div class="row">
       <div class="col-md-3 col-sm-6 col-lg-3">
         <ul class="list-group">
-          <li class="list-group-item active"> <a style="color: white;font-weight: 700;" href=" {% url 'gallery' %} "> All Categories </a> </li>
+          <li class="list-group-item active"> <a style="color: white;font-weight: 700;font-family: verdana;font-size: 25px;" href=" {% url 'gallery' %} " style="background-color: gray;"> All Categories </a> </li>
           {% for category in categories %}
           <li class="list-group-item">
-            <a href=" {% url 'gallery' %}?category={{category.name}} ">  {{ category.name }} </a>
+                    <a href=" {% url 'gallery' %}?category={{category.name}} " style="text-decoration: none;color: black;font-weight: 700;font-family: Verdana, Geneva, Tahoma, sans-serif;">  {{ category.name }} </a>
            
           
           </li>
           {% endfor %}
 
-          <a href="{% url 'add_image' %}" class="btn btn-dark btn-block text-warning">Add Picture</a>
+          <a href="{% url 'add_image' %}" class="btn btn-secondary btn-block text-warning">Add Picture</a>
           
         </ul>
       </div>
@@ -43,8 +42,8 @@
         <div class="row">
 
           {% for image in images %}
-          <div class="col-md-4">
-            <div class="card my-2">
+          <div class="col-md-4 bg-dark">
+            <div class="card my-2" style="background-color: white;">
               <img class="card-img"
                 src="{{ image.image.url }}"
                 alt="Card image cap">
