@@ -18,7 +18,7 @@ import django_heroku
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
-import cloudinary_storage
+
 
 
 cloudinary.config( 
@@ -44,9 +44,9 @@ SECRET_KEY = 'django-insecure-wn_kt2r-1k@8k$%cb%%nx1v&2%&d7@!c1btjnq9)_wj@h_@(8j
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
-ALLOWED_HOSTS = ['localhost']
+
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
