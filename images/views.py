@@ -21,7 +21,7 @@ def search_results(request):
 
 def delete_photo(request, id):
     image = Image.objects.get(pk=id)
-    image.delete()
+    image.delete()==False
     return redirect('gallery')
 
 

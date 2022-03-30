@@ -22,6 +22,11 @@ class Image(models.Model):
     description = models.TextField()
 
 
+    def delete(self):
+        return self.delete == False
+        self.save()
+
+
     def __str__(self):
         return self.description
 
